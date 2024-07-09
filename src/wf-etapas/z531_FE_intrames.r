@@ -112,7 +112,10 @@ AgregarVariables_IntraMes <- function(dataset) {
   dataset[, vmr_mpagominimo := vm_mpagominimo / vm_mlimitecompra]
 
   # Aqui debe usted agregar sus propias nuevas variables
-
+  # 09/07
+  dataset[, t_salariodmes := mpayroll / cliente_antiguedad]
+  dataset[, t_salariofmes := mpayroll2 / cliente_antiguedad]
+  dataset[, t_salariodfmes := (mpayroll+mpayroll2) / cliente_antiguedad]
   # valvula de seguridad para evitar valores infinitos
   # paso los infinitos a NULOS
   infinitos <- lapply(
